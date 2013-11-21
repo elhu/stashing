@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "logtastic/version"
+require "stashing/version"
 
 Gem::Specification.new do |s|
-  s.name        = "logtastic"
-  s.version     = Logtastic::VERSION
+  s.name        = "stashing"
+  s.version     = Stashing::VERSION
   s.authors     = ["Vincent Boisard"]
   s.email       = ["boisard.v@gmail.com"]
-  s.homepage    = "https://github.com/elhu/logtastic"
-  s.summary     = %q{Logstasher wrapper}
-  s.description = %q{Logstasher wrapper}
+  s.homepage    = "https://github.com/elhu/stashing"
+  s.summary     = %q{Logstash wrapper for easy ActiveSupport::Notifications logging}
+  s.description = s.summary
   s.licenses    = 'MIT'
 
-  s.rubyforge_project = "logtastic"
+  s.rubyforge_project = "stashing"
 
   s.files         = `git ls-files`.split("\n") - [".gitignore"]
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

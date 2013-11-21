@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    logtastic (0.1)
+    stashing (0.1)
       logstasher
       request_store
 
@@ -97,6 +97,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (>= 1.0.0)
-  logtastic!
   rails (>= 3.0)
   rspec
+  stashing!
