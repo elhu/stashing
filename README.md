@@ -26,13 +26,12 @@ config.stashing.enable_cache_instrumentation = true
 ## Enter Stashing
 Stashing is a wrapper around LogStasher. It means that any option you set will be forwarded to LogStasher, Stashing takes care of everything!
 
-Stashing is simply here to help you log metrics based on ActiveSupport::Notifications, by tracking them and adding them to the final payload.
+Stashing is simply here to help you log metrics based on [ActiveSupport::Notifications](http://guides.rubyonrails.org/active_support_instrumentation.html), by tracking them and adding them to the final payload.
 
 For example, if you want to log the number of SQL queries performed during a request, could can do:
 
 ```ruby
 # config/initializers/stashing.rb
-
 Stashing.watch('sql.active_record') do |name, start, finish, id, payload, stash|
   duration = (finish - start) * 1000
   stash[:queries] = stash[:queries].to_i.succ
