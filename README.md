@@ -68,3 +68,7 @@ Whatever you put in your `stash`, you'll get back in your log, with either the `
 ```json
 {"@source":"unknown","@tags":["request"],"@fields":{"method":"GET","path":"/login","format":"html","controller":"session","action":"credential_requestor","status":200,"duration":1265.1,"view":1087.07,"db":89.96,"sql.active_record":{"queries":35,"slowest_query":14.312999999999999},"ip":"127.0.0.1","route":"session#credential_requestor","parameters":"service=http://example.com/login\n","user_id":null,"cas_id":null,"session_id":"e309097c16d4c4bd2ca1474b316e6406","request_id":"6dffb5ea-8075-4e38-b2ba-bb5f5264421a","cache":{"fetch_hit":3}},"@timestamp":"2013-11-21T14:35:08.210091+00:00"}
 ```
+
+## Copyright
+
+Copyright &copy; 2013 Vincent Boisard, released under the MIT license.
