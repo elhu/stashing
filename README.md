@@ -1,4 +1,5 @@
 # Stashing
+[![Build Status](https://travis-ci.org/elhu/stashing.png)](https://travis-ci.org/elhu/stashing) [![Code Climate](https://codeclimate.com/github/elhu/stashing.png)](https://codeclimate.com/github/elhu/stashing)
 ### Wrapped-up [Logstasher](https://github.com/shadabahmed/logstasher) for easy ActiveSupport::Notifications logging
 
 LogStasher is awesome. It does one thing, and does it well.
