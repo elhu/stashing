@@ -2,7 +2,7 @@
 ### Wrapped-up [Logstasher](https://github.com/shadabahmed/logstasher) for easy ActiveSupport::Notifications logging
 
 LogStasher is awesome. It does one thing, and does it well.
-While you can add information to Logstasher relatively easily, it is harder to add information that changes over time, for example, the number of SQL queries performed during a request.
+While you can add information to Logstasher very easily, it is harder to add information that changes over time, for example, the number of SQL queries performed during a request.
 
 ## Installation
 In your Gemfile:
@@ -23,12 +23,9 @@ config.stashing.enable_cache_instrumentation = true
 ```
 
 ## Enter Stashing
-Stashing is a wrapper around LogStasher.
-Any option you can pass to LogStasher, you can pass to Stashing.
+Stashing is a wrapper around LogStasher. It means that any option you set will be forwarded to LogStasher, Stashing takes care of everything!
 
 Stashing is simply here to help you log metrics based on ActiveSupport::Notifications, by tracking them and adding them to the final payload.
-
-See a complete [example](https://github.com/elhu/stashing/blob/master/example/initializer.rb).
 
 For example, if you want to log the number of SQL queries performed during a request, could can do:
 
@@ -50,7 +47,7 @@ end
 * `payload`: Event's payload
 * `stash`: A thread-safe hash where you can store the data you want to log. This is reset after each request.
 
-If you want to share an `stash` between several events, you can assign them to an `event_group`:
+If you want to share a `stash` between several events, you can assign them to an `event_group`:
 
 ``` ruby
 # config/initializers/stashing.rb
@@ -63,8 +60,10 @@ Stashing.watch('cache_generate.active_support', event_group: 'cache') do |*args,
 end
 ```
 
-Whatever you put in your `stash`, you'll get back in your log:
+See a complete [example](https://github.com/elhu/stashing/blob/master/examples/initializer.rb).
+
+Whatever you put in your `stash`, you'll get back in your log, with either the `event_group` or the event name as the key:
+
 ```json
-# The field name is either the notification's name, or the `event_group` if one is set.
 {"@source":"unknown","@tags":["request"],"@fields":{"method":"GET","path":"/login","format":"html","controller":"session","action":"credential_requestor","status":200,"duration":1265.1,"view":1087.07,"db":89.96,"sql.active_record":{"queries":35,"slowest_query":14.312999999999999},"ip":"127.0.0.1","route":"session#credential_requestor","parameters":"service=http://example.com/login\n","user_id":null,"cas_id":null,"session_id":"e309097c16d4c4bd2ca1474b316e6406","request_id":"6dffb5ea-8075-4e38-b2ba-bb5f5264421a","cache":{"fetch_hit":3}},"@timestamp":"2013-11-21T14:35:08.210091+00:00"}
 ```
