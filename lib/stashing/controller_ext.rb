@@ -17,7 +17,7 @@ class Stashing
     def append_info_to_payload(payload)
       super
       # At the end of the request (process_action.action_controller), add the store to the payload
-      Stashing.store.each do |key, value|
+      Stashing.stash.each do |key, value|
         payload[key] = value
       end
     end
