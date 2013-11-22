@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    stashing (0.1)
+    stashing (0.1.1)
       logstasher
       request_store
 
 GEM
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
