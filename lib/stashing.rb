@@ -23,11 +23,14 @@ class Stashing
   def self.watch(event, opts = {}, &block)
     event_group = opts[:event_group] || event
     ActiveSupport::Notifications.subscribe(event) do |*args|
-      # It's necessary to add the custom_fields at runtime, otherwise LogStasher overrides them.
-      Stashing.custom_fields << event_group unless Stashing.custom_fields.include? event_group
+      begin
+        # It's necessary to add the custom_fields at runtime, otherwise LogStasher overrides them.
+        Stashing.custom_fields << event_group unless Stashing.custom_fields.include? event_group
 
-      # Calling the processing block with the Notification args, plus the event_stash
-      block.call(*args, stash[event_group])
+        # Calling the processing block with the Notification args, plus the event_stash
+        block.call(*args, stash[event_group])
+      rescue StandardError
+      end
     end
   end
 end

@@ -13,9 +13,19 @@ describe 'Stashing' do
 
   describe "#watch" do
     it "subscribes to the required event" do
-      ActiveSupport::Notifications = double("Notifications")
       ActiveSupport::Notifications.should_receive(:subscribe).with('event_name')
       Stashing.watch('event_name')
+    end
+
+    it "never raises an exception" do
+      Stashing.watch('event_name') do
+        1 / 0
+      end
+      expect {
+        ActiveSupport::Notifications.instrument "event_name", this: :data do
+          "test"
+        end
+      }.to_not raise_error
     end
   end
 end
