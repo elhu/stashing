@@ -1,3 +1,7 @@
+# WARNING
+Development of this gem is discontinued, and I strongly encourage tou don't use it anymore.
+Please migrate to [peastash](https://github.com/elhu/peastash), which has a much cleaner code base and just as many features.
+
 # Stashing
 [![Build Status](https://travis-ci.org/elhu/stashing.png)](https://travis-ci.org/elhu/stashing) [![Code Climate](https://codeclimate.com/github/elhu/stashing.png)](https://codeclimate.com/github/elhu/stashing)
 ### Wrapped-up [Logstasher](https://github.com/shadabahmed/logstasher) for easy ActiveSupport::Notifications logging
